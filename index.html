@@ -1,0 +1,11 @@
+---
+title: GIFs
+---
+
+<ul>
+	{% for image in site.static_files %}
+		{% if image.path contains 'gif' %}
+			<li><a href="{{ site.baseurl }}{{ image.path }}">{{ image.path }}</a></li>
+		{% endif %}
+	{% endfor %}
+</ul>
