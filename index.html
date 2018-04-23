@@ -4,9 +4,16 @@ layout: default
 ---
 
 <ul>
-	{% for image in site.static_files %}
-		{% if image.path contains 'gif' %}
-			<li><a href="{{ site.baseurl }}{{ image.path }}">{{ image.path }}</a></li>
-		{% endif %}
+	{% for folder in site.data.folders %}
+		<li class="parent"><a href="#">{{ folder.name }}</a> 
+
+			<ul class="child">
+				{% for image in site.static_files %}
+					{% if image.extname contains 'gif' and image.path contains folder.name %}
+						<li><a href="{{ site.baseurl }}{{ image.path }}">{{ image.path }}</a></li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</li>
 	{% endfor %}
 </ul>

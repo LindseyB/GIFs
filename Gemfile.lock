@@ -93,6 +93,8 @@ GEM
     jekyll-sitemap (0.12.0)
       jekyll (~> 3.3)
     jekyll-swiss (0.4.0)
+    jekyll-theme-hacker (0.0.4)
+      jekyll (~> 3.3)
     jekyll-watch (1.5.1)
       listen (~> 3.0)
     jemoji (0.7.0)
@@ -147,6 +149,7 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   jekyll (= 3.3.0)
+  jekyll-theme-hacker
 
 BUNDLED WITH
    1.16.1
