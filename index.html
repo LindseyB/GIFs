@@ -3,17 +3,18 @@ title: GIFs
 layout: default
 ---
 
-<ul>
-	{% for folder in site.data.folders %}
-		<li class="parent"><a href="#">{{ folder.name }}</a> 
+<a href="#" class="btn js-reveal" data-class="BobsBurgers">Bob's Burgers</a> 
+<a href="#" class="btn js-reveal" data-class="Crows">Crows</a>
+<a href="#" class="btn js-reveal" data-class="Hackers">Hackers</a>
+<a href="#" class="btn js-reveal" data-class="Misc">Misc</a>
 
-			<ul class="child">
-				{% for image in site.static_files %}
-					{% if image.extname contains 'gif' and image.path contains folder.name %}
-						<li><a href="{{ site.baseurl }}{{ image.path }}">{{ image.path }}</a></li>
-					{% endif %}
-				{% endfor %}
-			</ul>
-		</li>
+
+<div class="grid">
+	{% for folder in site.data.folders %}
+		{% for image in site.static_files %}
+			{% if image.extname contains 'gif' and image.path contains folder.name %}
+				<img class="lazy grid-item {{ folder.name }}" data-src="{{ site.baseurl }}{{ image.path }}">
+			{% endif %}
+		{% endfor %}
 	{% endfor %}
-</ul>
+</div>

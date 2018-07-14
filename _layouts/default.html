@@ -9,6 +9,7 @@
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/8.10.0/lazyload.min.js"></script>
   </head>
 
   <body>
@@ -34,10 +35,15 @@
       </section>
     </div>
     <script type="text/javascript">
-      $('.child').hide();
-      $('.parent').click(function() {
-        $('.child').slideUp();
-        $(this).find('ul').slideToggle();
+      var myLazyLoad = new LazyLoad({
+        elements_selector: ".lazy"
+      });
+
+      $( ".js-reveal" ).click(function() {
+        klass = $(this).data("class");
+        myLazyLoad.update();
+        $(".grid-item").hide();
+        $("." + klass).fadeIn();
       });
     </script>
   </body>
