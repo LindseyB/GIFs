@@ -3,6 +3,10 @@
 
 @import "{{ site.theme }}";
 
+img {
+	min-height: 150px;
+}
+
 .container {
 	max-width: initial !important;
 }
