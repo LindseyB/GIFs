@@ -6,11 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/8.10.0/lazyload.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@16.1.0/dist/lazyload.min.js"></script>
   </head>
 
   <body>
@@ -36,15 +32,8 @@
       </section>
     </div>
     <script type="text/javascript">
-      var myLazyLoad = new LazyLoad({
+      var lazyLoadInstance = new LazyLoad({
         elements_selector: ".lazy"
-      });
-
-      $( ".js-reveal" ).click(function() {
-        klass = $(this).data("class");
-        myLazyLoad.update();
-        $(".grid-item").hide();
-        $("." + klass).fadeIn();
       });
     </script>
   </body>
