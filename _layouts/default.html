@@ -38,12 +38,20 @@
 
       window.onload = function() {
         var links = document.getElementsByClassName("js-reveal");
-        links.foreach((link) => {
+        for(const link of links){
           link.onclick = function() {
-            document.getElementsByClassName('.grid-item')[0].style.visibility = 'hidden';
-            document.getElementsByClassName(link.dataset.class)[0].style.visibility = 'visible';
+            items = document.getElementsByClassName("grid-item");
+            const klass = link.dataset.class;
+            for(const item of items) {
+              if (item.classList.contains(klass)) {
+                item.style.display = "inline";
+              } else {
+                item.style.display = "none";
+              }
+            }
+            lazyLoadInstance.update();
           }
-        })
+        }
       }
     </script>
   </body>

@@ -12,7 +12,7 @@ layout: default
 	{% for folder in site.data.folders %}
 		{% for image in site.static_files %}
 			{% if image.extname contains 'gif' and image.path contains folder.name %}
-				<img class="lazy grid-item {{ folder.name }}" data-src="{{ site.baseurl }}{{ image.path }}">
+				<img class="lazy grid-item {{ folder.name }}" data-src="{{ site.baseurl }}{{ image.path }}" style="display: none">
 			{% endif %}
 		{% endfor %}
 	{% endfor %}
