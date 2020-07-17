@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@16.1.0/dist/lazyload.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@16.1.0/dist/lazyload.min.js" async></script>
+    <script src="/assets/js/application.js" async></script>
   </head>
 
   <body>
@@ -31,28 +32,5 @@
         {{ content }}
       </section>
     </div>
-    <script type="text/javascript">
-      var lazyLoadInstance = new LazyLoad({
-        elements_selector: ".lazy"
-      });
-
-      window.onload = function() {
-        var links = document.getElementsByClassName("js-reveal");
-        for(const link of links){
-          link.onclick = function() {
-            items = document.getElementsByClassName("grid-item");
-            const klass = link.dataset.class;
-            for(const item of items) {
-              if (item.classList.contains(klass)) {
-                item.style.display = "inline";
-              } else {
-                item.style.display = "none";
-              }
-            }
-            lazyLoadInstance.update();
-          }
-        }
-      }
-    </script>
   </body>
 </html>
