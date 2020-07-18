@@ -1,19 +1,6 @@
-
-  // Set the options globally
-  // to make LazyLoad self-initialize
-  window.lazyLoadOptions = {
-    elements_selector: ".lazy"
-  };
-
-  // Listen to the initialization event
-  // and get the instance of LazyLoad
-  window.addEventListener(
-    "LazyLoad::Initialized",
-    function (event) {
-      window.lazyLoadInstance = event.detail.instance;
-    },
-    false
-  );
+var lazyLoadInstance = new LazyLoad({
+  elements_selector: ".lazy"
+});
 
   window.onload = function() {
     window.currentClass = "";
@@ -21,7 +8,13 @@
     for(const link of links){
       link.onclick = function() {
         items = document.getElementsByClassName("grid-item");
+
+        for(const activeLinks of document.getElementsByClassName("active")) {
+          activeLinks.classList.remove("active");
+        }
+
         const klass = link.dataset.class;
+        link.classList.add("active");
         window.currentClass = klass;
         for(const item of items) {
           if (item.classList.contains(klass)) {
@@ -31,9 +24,7 @@
           }
         }
 
-        if(window.lazyLoadInstance) {
-            window.lazyLoadInstance.update();
-        }
+        lazyLoadInstance.update();
       }
     }
 
@@ -52,6 +43,8 @@
                     item.style.display = "none";
                 }
             }
+
+          lazyLoadInstance.update();
         }
     });
 
