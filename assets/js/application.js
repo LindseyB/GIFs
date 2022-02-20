@@ -37,7 +37,7 @@ var lazyLoadInstance = new LazyLoad({
             const regex = new RegExp(filters.join("|"), "i")
             const items = document.getElementsByClassName(window.currentClass);
             for(const item of items){
-                if(regex.test(item.src)){
+                if(regex.test(item.src.split("/").pop())){
                     item.style.display = "inline";
                 } else {
                     item.style.display = "none";
