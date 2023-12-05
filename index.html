@@ -4,15 +4,22 @@ layout: default
 ---
 
 {% for folder in site.data.folders %}
-	<a href="#" class="btn js-reveal" data-class="{{ folder.name }}">{{ folder.name }}</a> 
+	<a href="#" class="btn js-reveal" data-class="{{ folder.name }}">{{ folder.name }}</a>
 {% endfor %}
 
 
 <div class="grid">
 	{% for folder in site.data.folders %}
 		{% for image in site.static_files %}
-			{% if image.extname contains 'gif' and image.path contains folder.name %}
-				<img class="lazy grid-item {{ folder.name }}" data-src="{{ site.baseurl }}{{ image.path }}" style="display: none">
+			{% if image.path contains folder.name %}
+				{% if image.extname contains 'webm' %}
+					<video class="lazy grid-item {{ folder.name }}" autoplay loop muted style="display: none">
+						<source src="{{ site.baseurl }}{{ image.path }}" type="video/webm">
+					</video>
+				{% endif %}
+				{% if image.extname contains 'gif' %}
+					<img class="lazy grid-item {{ folder.name }}" data-src="{{ site.baseurl }}{{ image.path }}" style="display: none">
+				{% endif}
 			{% endif %}
 		{% endfor %}
 	{% endfor %}
